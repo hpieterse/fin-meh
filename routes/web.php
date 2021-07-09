@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BudgetCategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get("/budget_category", [ BudgetCategoriesController::class, 'index'])->name("budget_category.index");
+Route::get("/budget_category/create", [ BudgetCategoriesController::class, 'create'])->name("budget_category.create");
+Route::post("/budget_category", [ BudgetCategoriesController::class, 'store'])->name("budget_category.store");
