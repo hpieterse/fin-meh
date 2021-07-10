@@ -15,7 +15,7 @@
       <div class="card mt-4">
         <div class="card-header d-flex">
           <span class="flex-fill">{{$category->name}}</span>
-          <a href="#"><x-icon-pencil-alt-solid class="icon" /></a>
+          <a href="{{ route('budget_category.edit', [ 'budget_category'  => $category->id ]) }}"><x-icon-pencil-alt-solid class="icon" /></a>
         </div>
 
         <div class="card-body">
