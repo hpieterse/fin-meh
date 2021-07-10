@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BudgetCategory;
+use Illuminate\Validation\Rule;
 
 class BudgetCategoriesController extends Controller
 {
@@ -12,21 +13,28 @@ class BudgetCategoriesController extends Controller
     }
 
     public function index(){
-        return view('budget_categories.index');
+        $budgetCategories = auth()->user()->budgetCategories()->get();
+        return view('budget_category.index', ['budgetCategories' => $budgetCategories]);
     }
 
     public function create(){
-        return view('budget_categories.create');
+        return view('budget_category.create');
     }
 
     public function edit(BudgetCategory $budgetCategory){
         $this->authorize('update', $budgetCategory);
-        return view('budget_categories.edit', compact('budgetCategory'));
+        return view('budget_category.edit', compact('budgetCategory'));
     }
 
     public function store(Request $request){
         $data = $request->validate([
-            'name' => 'required|unique:budget_categories|max:255'
+            'name' => [
+                'required',
+                Rule::unique('budget_categories')->where(function ($query) {
+                    return $query->where('user_id', auth()->user()->id);
+                }),
+                'max:255',
+            ]
         ]);
 
         auth()->user()->budgetCategories()->create($data);
@@ -39,7 +47,9 @@ class BudgetCategoriesController extends Controller
         $data = $request->validate([
             'name' => [
                 'required',
-                'unique:budget_categories,name,' . $budgetCategory->id,
+                Rule::unique('budget_categories')->where(function ($query) {
+                    return $query->where('user_id', auth()->user()->id);
+                })->ignore($budgetCategory),
                 'max:255',
             ]
         ]);
@@ -54,6 +64,4 @@ class BudgetCategoriesController extends Controller
         $budgetCategory->delete();
         return redirect()->route('budget_category.index');
     }
-
-
 }

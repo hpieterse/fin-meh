@@ -57,7 +57,7 @@
           This will delete the budget category, spend category and spend items.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           <form method="POST" action="{{ route('budget_category.destroy', $budgetCategory->id) }}">
             @csrf
             @method('DELETE')
