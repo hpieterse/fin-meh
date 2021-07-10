@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BudgetCategoriesController;
 use App\Http\Controllers\SpendCategoriesController;
+use App\Http\Controllers\SpendItemController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +36,10 @@ Route::post("/budget_category/{budget_category}/spend_category", [ SpendCategori
 Route::get("/budget_category/{budget_category}/spend_category/{spend_category}/edit", [ SpendCategoriesController::class, 'edit'])->name("spend_category.edit");
 Route::put("/budget_category/{budget_category}/spend_category/{spend_category}", [ SpendCategoriesController::class, 'update'])->name("spend_category.update");
 Route::delete("/spend_category/{spend_category}", [ SpendCategoriesController::class, 'destroy'])->name("spend_category.destroy");
+
+Route::get("/spend_item", [ SpendItemController::class, 'index'])->name("spend_item.index");
+Route::get("/spend_item/create", [ SpendItemController::class, 'create'])->name("spend_item.create");
+Route::post("/spend_item", [ SpendItemController::class, 'store'])->name("spend_item.store");
+Route::get("/spend_item/{spend_item}/edit", [ SpendItemController::class, 'edit'])->name("spend_item.edit");
+Route::put("/spend_item/{spend_item}", [ SpendItemController::class, 'update'])->name("spend_item.update");
+Route::delete("/spend_item/{spend_item}", [ SpendItemController::class, 'destroy'])->name("spend_item.destroy");

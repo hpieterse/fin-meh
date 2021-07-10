@@ -13,6 +13,11 @@ class SpendCategory extends Model
 
     public function budgetCategory()
     {
-        return $this->belongsTo(budgetCategory::class);
+        return $this->belongsTo(BudgetCategory::class);
+    }
+
+    public function spendItems()
+    {
+        return $this->hasMany(SpendItem::class);
     }
 }

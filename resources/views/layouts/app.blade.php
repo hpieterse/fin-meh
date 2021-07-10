@@ -37,6 +37,12 @@
                             <a class="nav-link {{request()->routeIs('budget_category.index') ? 'active' : 'not'}}" 
                                 href="{{ route('budget_category.index') }}"
                             >{{ __('Budget Categories') }}</a>
+                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{request()->routeIs('spend_item.index') ? 'active' : 'not'}}" 
+                                href="{{ route('spend_item.index') }}"
+                            >{{ __('Spend Items') }}</a>
                         </li>
                     </ul>
 
