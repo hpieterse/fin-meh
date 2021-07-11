@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Fin Meh</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,8 +23,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/budget/'. date('Y-m-1')) }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand d-flex align-items-center" href="@auth
+                        {{ url('/budget') }}
+                    @else
+                        {{ url('/') }}
+                    @endauth">
+                    <x-icon-meh-regular style="width: 20px" class="text-secondary mr-2"/>
+                    Fin Meh
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,9 +38,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @auth
                         <li class="nav-item">
                             <a class="nav-link {{request()->routeIs('budget.show') ? 'active' : 'not'}}" 
-                                href="{{ route('budget.show', ['date' => date('Y-m-1')]) }}"
+                                href="{{ route('budget.index') }}"
                             >{{ __('Budget') }}</a>
                             
                         </li>
@@ -50,6 +56,7 @@
                                 href="{{ route('spend_item.index') }}"
                             >{{ __('Spend Items') }}</a>
                         </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

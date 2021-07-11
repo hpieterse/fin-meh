@@ -6,8 +6,10 @@ function getSpendAmount($spendCategory){
     return $spendCategory->amount ?? 0;
 }
 
-$maxAmount = max(array_map(static fn($budgetCategory) => 
-    max(array_map('getSpendAmount',$budgetCategory->spendCategories)), $budgetCategories));
+$maxAmount = count($budgetCategories) > 0 
+    ? max(array_map(static fn($budgetCategory) => 
+        max(array_map('getSpendAmount',$budgetCategory->spendCategories)), $budgetCategories))
+    : 0;
 
 $previousMonth = clone $monthStart;
 $previousMonth->sub(new DateInterval('P1M'));
@@ -26,6 +28,14 @@ $nextMonth->add(new DateInterval('P1M'));
                     <x-icon-caret-right-solid class="icon" />
                 </a>
             </div>
+            @if (count($budgetCategories) == 0)
+                <div class="card mt-4">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p>You don't have any budget categories defined.</p>
+                        <a href="{{ route('budget_category.create') }}" class="btn btn-primary">Create Budget Category</a>
+                    </div>
+                </div>
+            @endif
             @foreach ($budgetCategories as $budgetCategory)
                 <div class="card mt-4">
                     <div class="card-header d-flex">

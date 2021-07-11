@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/budget', [App\Http\Controllers\BudgetController::class, 'index'])->name('budget.index');
 Route::get('/budget/{date}', [App\Http\Controllers\BudgetController::class, 'show'])->name('budget.show');
 
 Route::get("/budget_category", [ BudgetCategoriesController::class, 'index'])->name("budget_category.index");

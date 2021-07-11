@@ -19,6 +19,10 @@ class BudgetController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index()
+    {
+        return redirect(route('budget.show',date('Y-m-1'))); 
+    }
 
     /**
      * Show the application dashboard.
