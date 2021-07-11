@@ -46,8 +46,8 @@ $uniqueDates = array_unique($dates);
       @endforeach
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-10 d-flex justify-content-center">
+  <div class="row pt-3">
+    <div class="col-md-10 offset-md-1">
       {{ $spendItems->links() }}
     </div>
   </div>

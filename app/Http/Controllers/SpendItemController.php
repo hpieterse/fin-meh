@@ -44,10 +44,10 @@ class SpendItemController extends Controller
     public function index(){
         $userId = auth()->user()->id;
 
-        $spendItems = SpendItem::with(['spendCategory.budgetCategory.user' => function ($query)  use($userId) {
-            $query->where('id', $userId);
-        }]
-            )->orderBy('date', 'DESC')
+        $spendItems = SpendItem::with('spendCategory.budgetCategory.user')
+            ->whereHas('spendCategory.budgetCategory.user', function ($query)  use($userId) {
+                $query->where('id', $userId);
+            })->orderBy('date', 'DESC')
             ->paginate(20);
 
         return view('spend_item.index', compact('spendItems'));
