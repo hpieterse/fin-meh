@@ -17,7 +17,7 @@ $uniqueDates = array_unique($dates);
         </div>
       </div>
       @foreach($uniqueDates as $date)
-      <div class="pt-5">
+      <div class="pt-4">
         <h5>{{$date}}</h4>
           <!-- get spend items -->
           @php

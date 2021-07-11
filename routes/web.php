@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\BudgetCategoriesController;
 use App\Http\Controllers\SpendCategoriesController;
 use App\Http\Controllers\SpendItemController;
@@ -22,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/budget/{date}', [App\Http\Controllers\BudgetController::class, 'show'])->name('budget.show');
 
 Route::get("/budget_category", [ BudgetCategoriesController::class, 'index'])->name("budget_category.index");
 Route::get("/budget_category/create", [ BudgetCategoriesController::class, 'create'])->name("budget_category.create");
