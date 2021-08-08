@@ -1,8 +1,6 @@
 # Fin Meh
 Fin Meh is a personal budgeting and spend tracking application. Load and categorise your spending and see a summary budget.
 
-[Demo Site](https://fin-meh.handsaw.co.za/)
-
 ## Getting Started
 
 The project is build using [Laravel](https://laravel.com/). The project i configured to run using [Laravel Sail](https://laravel.com/docs/8.x/sail).
