@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Add Spend Category') }} to {{$budgetCategory->name}}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('spend_category.store', [ 'budget_category'  => $budgetCategory->id ]) }}" novalidate>
+                    <form method="POST" action="{{ route('budget_category.spend_category.store', [ 'budget_category'  => $budgetCategory->id ]) }}" novalidate>
                         @csrf
 
                         <div class="form-group row">

@@ -17,9 +17,9 @@ class SpendCategoriesController extends Controller
         return view('spend_category.create', compact('budgetCategory'));
     }
 
-    public function edit(BudgetCategory $budgetCategory, SpendCategory $spendCategory){
+    public function edit(SpendCategory $spendCategory){
         $this->authorize('update', $spendCategory);
-        return view('spend_category.edit', compact('spendCategory', 'budgetCategory'));
+        return view('spend_category.edit', compact('spendCategory'));
     }
 
     public function store(BudgetCategory $budgetCategory, Request $request){
@@ -39,13 +39,13 @@ class SpendCategoriesController extends Controller
         return redirect(route('budget_category.index'));
     }
 
-    public function update(BudgetCategory $budgetCategory, SpendCategory $spendCategory, Request $request){
+    public function update(SpendCategory $spendCategory, Request $request){
         $this->authorize('update', $spendCategory);
         $data = $request->validate([
             'name' => [
                 'required',
-                Rule::unique('spend_categories')->where(function ($query) use($budgetCategory) {
-                    return $query->where('budget_category_id', $budgetCategory->id);
+                Rule::unique('spend_categories')->where(function ($query) use($spendCategory) {
+                    return $query->where('budget_category_id', $spendCategory->budgetCategory->id);
                 })->ignore($spendCategory),
                 'max:255',
             ]

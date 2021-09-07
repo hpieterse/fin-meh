@@ -6,10 +6,10 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('Edit Spend Category') }} of {{$budgetCategory->name}} </div>
+        <div class="card-header">{{ __('Edit Spend Category') }} of {{$spendCategory->budgetCategory->name}} </div>
 
         <div class="card-body">
-          <form method="POST" action="{{ route('spend_category.update', ['budget_category' => $budgetCategory->id, 'spend_category' => $spendCategory->id]) }}" novalidate>
+          <form method="POST" action="{{ route('spend_category.update', ['spend_category' => $spendCategory->id]) }}" novalidate>
             @csrf
             @method('PUT')
             <div class="form-group row">

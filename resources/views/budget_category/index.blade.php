@@ -32,7 +32,7 @@
             @endforeach
           </ul>
           @endif
-          <a href="{{ route('spend_category.create', [ 'budget_category'  => $budgetCategory->id ]) }}"
+          <a href="{{ route('budget_category.spend_category.create', [ 'budget_category'  => $budgetCategory->id ]) }}"
             class="btn btn-secondary">
             Add Spend Category
           </a>
