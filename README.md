@@ -30,9 +30,20 @@ artisan key:generate
 ```
 
 ### Run the project
-Rnu the project using Laravel Sail
+Run the project using Laravel Sail
 ```
 ./vendor/bin/sail up
+```
+
+### Run tests
+Run the tests by running the following. The test require that the project is running using the sail command above.
+```
+./vendor/bin/sail artisan test
+```
+
+To generate a coverage report run the following
+```
+./vendor/bin/sail artisan test --coverage-html reports/
 ```
 
 ## Road Map
