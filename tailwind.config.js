@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [
     './resources/**/*.blade.php',
@@ -6,10 +8,21 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      textColor: {
+        'primary': colors.gray['800'],
+        'secondary': colors.gray['600'],
+        'brand': '#FF4E08'
+      }
+    },
+    fontFamily: {
+      sans: ['Nunito', 'sans-serif'],
+    },
+    
   },
   variants: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }

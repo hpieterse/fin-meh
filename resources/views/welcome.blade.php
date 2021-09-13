@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex flex-column align-items-center pt-5">
-    <h1 class="text-5xl">Welcome to Fin Meh</h1>
-    <livewire:counter /> 
-     <x-icon-meh-light style="width: 100px" class="text-secondary py-5"/>
+<div class="flex flex-col items-center pt-40">
+    <h1 class="text-5xl">Welcome to YABT</h1>
+
+     <x-icon-rabbit-fast-solid style="width: 100px" class="text-brand pt-10 pb-20"/>
      <div>
-        <a href="{{ route('login') }}" class="mr-5 pl-4 h3">{{ __('Login') }}</a>
-        <a href="{{ route('register') }}" class="ml-5 h3">{{ __('Register') }}</a>
+        <a href="{{ route('login') }}" class="mr-10 pl-10 text-2xl">{{ __('Login') }}</a>
+        <a href="{{ route('register') }}" class="ml-10 pr-10 text-2xl">{{ __('Register') }}</a>
      </div>
 <div>
 @endsection

@@ -1,5 +1,5 @@
-# Fin Meh
-Fin Meh is a personal budgeting and spend tracking application. Load and categorise your spending and see a summary budget.
+# YABT  (Yet Another Budgeting Tool)
+YABT is a personal budgeting and spend tracking application. Load and categorise your spending and see a summary budget.
 
 ## Getting Started
 
