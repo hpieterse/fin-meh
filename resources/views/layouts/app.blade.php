@@ -19,12 +19,13 @@
     <!-- Styles -->
     <meta charset="UTF-8" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     @livewireStyles
 </head>
 <body class="bg-gray-50 text-primary">
     <div id="app">
-        <nav class="bg-white shadow-sm p-2">
-            <div class="flex flex-row container mx-auto">
+        <x-menu>
+            <x-slot name="brand">
                 <a class="flex flex-row items-center space-x-3" href="@auth
                         {{ url('/budget') }}
                     @else
@@ -33,19 +34,17 @@
                     <x-icon-rabbit-fast-solid class="h-10 text-brand"/>
                     <span>YABT</span>
                 </a>
-                <x-menu>
-                    <x-menu-item :route-name="'budget.index'">
-                        {{ __('Budget') }}
-                    </x-menu-item>
-                    <x-menu-item :route-name="'budget_category.index'">
-                        {{ __('Budget Categories') }}
-                    </x-menu-item>
-                    <x-menu-item :route-name="'spend_item.index'">
-                        {{ __('Spend Items') }}
-                    </x-menu-item>
-                </x-menu>
-            </div>
-        </nav>
+            </x-slot>
+            <x-menu-item :route-name="'budget.index'">
+                {{ __('Budget') }}
+            </x-menu-item>
+            <x-menu-item :route-name="'budget_category.index'">
+                {{ __('Budget Categories') }}
+            </x-menu-item>
+            <x-menu-item :route-name="'spend_item.index'">
+                {{ __('Spend Items') }}
+            </x-menu-item>
+        </x-menu>
 
         <main class="container mx-auto">
             @yield('content')

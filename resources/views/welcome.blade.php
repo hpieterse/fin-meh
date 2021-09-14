@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="flex flex-col items-center pt-40">
-    <h1 class="text-5xl">Welcome to YABT</h1>
+    <h1 class="text-5xl text-center">Welcome to YABT</h1>
+    <p class="text-brand tracking-widest text-center">Yet Another Budget Tool <p>
 
      <x-icon-rabbit-fast-solid style="width: 100px" class="text-brand pt-10 pb-20"/>
      <div>
