@@ -7,6 +7,12 @@
       <h2>Budget Categories</h2>
       <div class="card">
         <div class="card-body">
+          <x-modal >
+            <x-slot name="title">
+              Create Budget Category
+            </x-slot>
+            <p>Hello World</p>
+          </x-modal>
           <a href="{{ route('budget_category.create') }}" class="btn btn-primary">Create Budget Category</a>
         </div>
       </div>

@@ -47,7 +47,7 @@
         </x-menu>
 
         <main class="container mx-auto">
-            @yield('content')
+            @yield('content') @if( isset($slot) ) {{ $slot }} @endif
         </main>
 
         @livewireScripts

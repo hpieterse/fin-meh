@@ -27,7 +27,9 @@ Auth::routes();
 Route::get('/budget', [App\Http\Controllers\BudgetController::class, 'index'])->name('budget.index');
 Route::get('/budget/{date}', [App\Http\Controllers\BudgetController::class, 'show'])->name('budget.show');
 
-Route::resource('budget_category', BudgetCategoriesController::class);
+Route::get('/budget_category', App\Http\Livewire\BudgetCategories::class)->name('budget_category.index')->middleware('auth');
+Route::resource('budget_category', BudgetCategoriesController::class)
+    ->except(["index"]);
 Route::resource('budget_category.spend_category', SpendCategoriesController::class)
     ->except(["index", "show"])
     ->shallow();
